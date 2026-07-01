@@ -13,5 +13,5 @@ env/
 
 uploads/
 temp/
-
+output.csv
 .DS_Store
