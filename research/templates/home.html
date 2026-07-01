@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - LinguaSearch</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #7c3aed;
+            --accent-color: #6366f1;
+            --text-dark: #111827;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 500;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .hero-section {
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #4f46e5, #6366f1);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+            color: white;
+        }
+        
+        .service-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+            background: var(--bg-white);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .footer {
+            background: #111827;
+            color: #d1d5db;
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer h5 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer p,
+        .footer a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}"><i class="fas fa-microscope me-2"></i><b>LinguaSearch</b></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="{{ url_for('home') }}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('retrieval') }}">Paper Retriever</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url_for('summarizer') }}">Summarizer</a></li>
+                    <!-- FIXED: Links now correctly point to section IDs for scrolling -->
+                    <li class="nav-item"><a class="nav-link" href="#services">Our Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="hero-section" id="home">
+            <h1 class="hero-title">Welcome to LinguaSearch</h1>
+            <h2 style="font-size: 2rem; color: var(--text-dark); margin-bottom: 1rem;">Mapping Knowledge in Material Science</h2>
+            <p class="hero-subtitle">
+                Our platform is a global knowledge hub designed to make research accessible. Analyze papers, translate keywords, summarize text, and discover a world of similar research in multiple languages from a single, easy-to-use interface.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{{ url_for('retrieval') }}" class="btn-custom">
+                    <i class="fas fa-search me-2"></i>Paper Retriever
+                </a>
+                <a href="{{ url_for('summarizer') }}" class="btn-custom">
+                    <i class="fas fa-file-alt me-2"></i>Summarizer
+                </a>
+            </div>
+        </section>
+        
+        <!-- NEW: Our Services Section -->
+        <section id="services" class="my-5">
+             <h2 class="text-center mb-5 hero-title" style="font-size: 2.5rem;">Our Core Services</h2>
+            <div class="row text-center g-4">
+                <div class="col-md-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon"><i class="fas fa-robot"></i></div>
+                        <h5>AI-Powered Extraction</h5>
+                        <p class="text-muted">Advanced algorithms automatically identify and extract abstracts from complex PDF layouts with high accuracy.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon"><i class="fas fa-language"></i></div>
+                        <h5>Multilingual Analysis</h5>
+                        <p class="text-muted">Instantly translate key terms or entire abstracts to broaden your research scope.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-card h-100">
+                        <div class="service-icon"><i class="fas fa-compass"></i></div>
+                        <h5>Research Discovery</h5>
+                        <p class="text-muted">Use translated keywords to find similar papers from a global database of over 200 million articles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0" id="about">
+                    <h5>About LinguaSearch</h5>
+                    <p>This tool is designed to accelerate academic research by breaking down language barriers. By leveraging AI for abstract extraction, summarization, and multilingual keyword analysis, we help students and researchers discover a wider world of relevant scientific literature.</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5>Navigate</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li><a href="{{ url_for('retrieval') }}">Paper Retriever</a></li>
+                        <li><a href="{{ url_for('summarizer') }}">Summarizer</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> info@linguasearch.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 LinguaSearch. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

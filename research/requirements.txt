@@ -1,0 +1,10 @@
+Flask
+pandas
+spacy
+pdfplumber
+deep-translator
+requests
+langdetect
+transformers
+torch
+sentencepiece
